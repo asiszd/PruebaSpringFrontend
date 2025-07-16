@@ -1,0 +1,120 @@
+<div class="main-div">
+  <mat-card class="card-style">
+    <mat-card-header>
+      <mat-card-title class="mat">
+        <h2 style="text-align: center">Agendar cita</h2>
+        <button
+          style="margin-bottom: 5%"
+          mat-button
+          color=""
+          (click)="regresar()"
+        >
+          <mat-icon> keyboard_backspace </mat-icon> Regresar a lista
+        </button>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- INICIA FORMULARIO DE CREACIÓN DE USUARIO -->
+      <form
+        ngNativeValidate
+        (ngSubmit)="guardar()"
+        #form="ngForm"
+        class="example-form"
+      >
+        <mat-card class="contenedor-interno">
+          <mat-card-content>
+            <div class="container">
+              <mat-form-field class="example-full-width">
+                <mat-label for="motivo">Motivo de la cita</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  class="form-control"
+                  name="motivo"
+                  placeholder="Ingresa el motivo de la cita"
+                  [(ngModel)]="cita.motivo"
+                  required=""
+                  #motivo="ngModel"
+                />
+                <div *ngIf="motivo.invalid && motivo.touched">
+                  <small style="color: red"
+                    >El campo Motivo es obligatorio.</small
+                  >
+                </div>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label for="nombre">NOMBRE DE LA MASCOTA</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  class="form-control"
+                  name="nombre"
+                  placeholder="Ingresa el nombre de la mascota"
+                  [(ngModel)]="cita.mascotaNombre"
+                  required=""
+                  #nombre="ngModel"
+                />
+                <div *ngIf="nombre.invalid && nombre.touched">
+                  <small style="color: red"
+                    >El campo NOMBRE es obligatorio.</small
+                  >
+                </div>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <mat-label for="edad">EDAD DE LA MASCOTA</mat-label>
+                <input
+                  matInput
+                  type="number"
+                  step="any"
+                  name="edad"
+                  class="form-control"
+                  placeholder="Ingresa la edad de la mascota"
+                  (keydown)="validaNumeros($event)"
+                  min="1"
+                  max="25"
+                  [(ngModel)]="cita.mascotaEdad"
+                  required=""
+                  #edad="ngModel"
+                />
+                <div *ngIf="edad.invalid && edad.touched">
+                  <small style="color: red">El campo EDAD es obligatorio</small>
+                </div>
+              </mat-form-field>
+
+              <!-- SELECT DE CLIENTE ID -->
+              <mat-form-field class="example-full-width">
+                <mat-label for="raza">Raza</mat-label>
+                <select
+                  matNativeControl
+                  required
+                  name="raza"
+                  class="form-control"
+                  [(ngModel)]="cita.mascotaRaza"
+                  required=""
+                  #raza="ngModel"
+                >
+                  @for (raza of razas; track raza) {
+
+                  <option [ngValue]="raza">{{raza}}</option>
+                  }
+                </select>
+                <div *ngIf="raza.invalid && raza.touched">
+                  <small style="color: red"
+                    >El campo RAZA es obligatorio.</small
+                  >
+                </div>
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+          <mat-card-actions style="display: flex; justify-content: center">
+            <button matFab extended color="warn">
+              <mat-icon>save</mat-icon> GUARDAR
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

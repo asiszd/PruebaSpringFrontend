@@ -46,7 +46,7 @@
           <ng-container matColumnDef="mascotaNombre">
             <th mat-header-cell *matHeaderCellDef>MASCOTA</th>
             <td mat-cell *matCellDef="let row">
-              <b>{{row.nombre}}</b><br />
+              <b>{{row.mascotaNombre}}</b><br />
               {{row.mascotaRaza}}
               <div class="divider" role="separator" aria-label="Divider"></div>
               {{row.mascotaEdad}} años
@@ -59,16 +59,15 @@
           </ng-container>
 
           <!-- BOTONES DE EDITAR Y ELIMINAR-->
-          <ng-container matColumnDef="editar">
+          <!-- <ng-container matColumnDef="editar">
             <th mat-header-cell *matHeaderCellDef>EDITAR</th>
             <td mat-cell *matCellDef="let row">
-              <!-- EDITAR -->
 
               <button matFab extended color="" (click)="editar(row)">
                 <mat-icon>edit</mat-icon> Editar
               </button>
             </td>
-          </ng-container>
+          </ng-container> -->
 
           <ng-container matColumnDef="eliminar">
             <th mat-header-cell *matHeaderCellDef>ELIMINAR</th>

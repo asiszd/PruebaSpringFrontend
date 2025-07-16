@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Cita } from '../entities/Cita';
+import { Raza } from '../entities/Raza';
 
 @Injectable({
   providedIn: 'root',
@@ -32,5 +33,9 @@ export class Ws {
 
   buscarCita(idCita: Cita) {
     return this.http.post<Cita>(this.urlCita + '/buscar/', idCita);
+  }
+
+  getRazas() {
+    return this.http.get<Raza[]>(this.urlCita + '/RazasPerro');
   }
 }
