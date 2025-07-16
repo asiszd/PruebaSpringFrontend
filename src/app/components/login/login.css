@@ -1,0 +1,15 @@
+.login-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

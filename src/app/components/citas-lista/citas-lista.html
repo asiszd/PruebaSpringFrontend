@@ -1,0 +1,95 @@
+<div class="main-div">
+  <mat-card class="card-style">
+    <mat-card-header>
+      <mat-card-title class="mat">
+        <h2 style="text-align: center">Mascotas</h2>
+        <button
+          style="margin-bottom: 5%"
+          mat-button
+          color=""
+          (click)="crear();"
+        >
+          <mat-icon>add</mat-icon> Añadir Cita
+        </button>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+          <!-- ID -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let row">{{row.id}}</td>
+          </ng-container>
+          <!-- FECHA -->
+          <ng-container matColumnDef="fecha">
+            <th mat-header-cell *matHeaderCellDef>FECHA</th>
+            <td mat-cell *matCellDef="let row">{{row.fecha | date}}</td>
+          </ng-container>
+          <!-- DUEÑO -->
+          <ng-container matColumnDef="duenio">
+            <th mat-header-cell *matHeaderCellDef>DUEÑO</th>
+            <td mat-cell *matCellDef="let row">{{row.duenio}}</td>
+          </ng-container>
+          <!-- MOTIVO -->
+          <ng-container matColumnDef="motivo">
+            <th mat-header-cell *matHeaderCellDef>MOTIVO</th>
+            <td mat-cell *matCellDef="let row">{{row.motivo}}</td>
+          </ng-container>
+          <!-- TELEFONO -->
+          <ng-container matColumnDef="telefono">
+            <th mat-header-cell *matHeaderCellDef>TELEFONO</th>
+            <td mat-cell *matCellDef="let row">{{row.telefono}}</td>
+          </ng-container>
+
+          <!-- MASCOTA -->
+          <ng-container matColumnDef="mascotaNombre">
+            <th mat-header-cell *matHeaderCellDef>MASCOTA</th>
+            <td mat-cell *matCellDef="let row">
+              <b>{{row.nombre}}</b><br />
+              {{row.mascotaRaza}}
+              <div class="divider" role="separator" aria-label="Divider"></div>
+              {{row.mascotaEdad}} años
+            </td>
+          </ng-container>
+          <!-- MASCOTA TIPO -->
+          <ng-container matColumnDef="mascotaTipo">
+            <th mat-header-cell *matHeaderCellDef>TIPO</th>
+            <td mat-cell *matCellDef="let row">{{row.mascotaTipo}}</td>
+          </ng-container>
+
+          <!-- BOTONES DE EDITAR Y ELIMINAR-->
+          <ng-container matColumnDef="editar">
+            <th mat-header-cell *matHeaderCellDef>EDITAR</th>
+            <td mat-cell *matCellDef="let row">
+              <!-- EDITAR -->
+
+              <button matFab extended color="" (click)="editar(row)">
+                <mat-icon>edit</mat-icon> Editar
+              </button>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="eliminar">
+            <th mat-header-cell *matHeaderCellDef>ELIMINAR</th>
+            <td mat-cell *matCellDef="let row">
+              <!-- ELIMINAR -->
+              <button matFab extended color="warn" (click)="eliminar(row)">
+                <mat-icon>delete</mat-icon> Eliminar
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator
+          [length]="citas.length"
+          [pageSizeOptions]="[5,10]"
+          aria-label="Selecciona la página"
+        ></mat-paginator>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
